@@ -39,10 +39,10 @@ void File::ProcessFile(string name){
 void File::ReadFile(){
   string line;
   ifstream file;
-  while (file.is_open() == false){
+  while (file.is_open() == false){                                              //loop allows user to try multiple files untli one can be opened
     file.open(file_name_);
     if (file.is_open()){
-      while (!file.eof()){
+      while (!file.eof()){                                                      //reads each line until reaching the end of the file
         getline(file, line);
         file_contents_ += line + '\n';
       }
@@ -59,7 +59,7 @@ void File::ReadFile(){
 
 void File::CountLines(){
   for(int i = 0; i < file_contents_.size(); ++i){
-    if(file_contents_.at(i) == '\n'){
+    if(file_contents_.at(i) == '\n'){                                           //counts new line characters to keep tracks of the number of lines
       number_of_lines_++;
     }
   }

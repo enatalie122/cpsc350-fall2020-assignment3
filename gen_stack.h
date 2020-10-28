@@ -23,21 +23,27 @@ public:
   Declares an array of specified type to hold 25 elements, sets top member variable to -1, and max_size_ to 25.
   */
   GenStack();
-  //~GenStack
+
+  /*Destructor: ~GenStack
+  Deletes the array, stack_array_.
+  */
   ~GenStack();
 
   /*Push
+  Adds a variable to the top of the stack.
   Parameters:
     data: a variable of a specified type represting data to be added to the top of the stack
   */
   void Push(type data);
+
   /*Pop
   Throws std::exception if the stack is empty
   Returns a variable of a specified type represting the top element that has been removed from the stack
   */
   type Pop();
+
   /*Peek
-  Returns a variable of a specified type represting the current top element on the stack
+  Returns a variable of a specified type represting the current top element on the stack without removing the variable.
   */
   type Peek();
 
@@ -45,31 +51,36 @@ public:
   Returns a boolean represting whether or not the stack is full.
   */
   bool IsFull();
+
   /*IsEmpty
   Returns a boolean represting whether or not the stack is empty.
   */
   bool IsEmpty();
+
   /*GetSize
   Returns an int represting the number of elements on the stack.
   */
   int GetSize();
-  //Print
-  void Print();
 
 private:
-  //Reseize
+  /*Resize
+  Creates a new array with room for an extra 25 elements, and copies over all the elements currently stored on the stack.
+  The method also changes the pointer, *stack_array_ to point to the new array.
+  */
   void Resize();
 
   /* *stack_array
-  A pointer to an array represting the stack .
+  A pointer to an array represting the stack.
   */
   type *stack_array_;
+
   /* top_
   An int represting the index of the top element of the stack.
   */
   int top_;
+  
   /* max_size_
-  An int represting the current max amount of elements the stack can hold without resizing. 
+  An int represting the current max amount of elements the stack can hold without resizing.
   */
   int max_size_;
 
@@ -122,12 +133,6 @@ template<class type> bool GenStack<type>::IsEmpty(){
 
 template<class type> int GenStack<type>::GetSize(){
   return top_+ 1;
-}
-
-template<class type> void GenStack<type>::Print(){
-  for(int i = 0; i <= top_; ++i){
-    cout << stack_array_[i] << endl;
-  }
 }
 
 template<class type> void GenStack<type>::Resize(){

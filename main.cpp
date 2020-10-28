@@ -46,6 +46,7 @@ int main(int argc, char **argv){
     } else if (user_input == 'n' || user_input == 'N'){
       can_run = false;
     }
+    
     delete processor;
     delete checker;
   }
